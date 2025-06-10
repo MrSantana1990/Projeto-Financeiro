@@ -1,0 +1,20 @@
+{
+  "name": "meu-financeiro",
+  "version": "1.0.0",
+  "description": "Sistema pessoal de gerenciamento financeiro com integração Google Sheets",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "googleapis": "^118.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [],
+  "author": "Rodolfo Santana",
+  "license": "MIT"
+}

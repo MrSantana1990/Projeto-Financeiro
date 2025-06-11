@@ -3,8 +3,10 @@ import { google } from 'googleapis';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 
 export async function getSheetsClient() {
+  const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+
   const auth = new google.auth.GoogleAuth({
-    keyFile: 'credentials.json',  // esse é o arquivo baixado
+    credentials,
     scopes: SCOPES
   });
 

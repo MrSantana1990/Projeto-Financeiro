@@ -1,14 +1,11 @@
 import express from 'express';
 import { addLançamento } from './sheets.js';
-import dotenv from 'dotenv';
 
-
-dotenv.config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// ID da sua planilha — copie da URL da planilha
-const SHEET_ID = '1vW7DYzwHmAVQa_0J2UkX9SqTVXdL-jxKI9oMpo0iPDY';
+// ID da planilha (use variável de ambiente no Render chamada SHEET_ID)
+const SHEET_ID = process.env.SHEET_ID;
 
 app.use(express.json());
 
@@ -40,5 +37,5 @@ app.post('/lancamentos', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });

@@ -3,11 +3,12 @@ import { google } from 'googleapis';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 
 export async function getSheetsClient() {
-  const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+const raw = process.env.GOOGLE_CREDENTIALS;
+const credentials = JSON.parse(raw.replace(/\\n/g, '\n'));
 
   const auth = new google.auth.GoogleAuth({
     credentials,
-    scopes: SCOPES
+    scopes: SCOPES,
   });
 
   const authClient = await auth.getClient();
@@ -23,7 +24,7 @@ export async function addLançamento(sheetId, valores) {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
-    range: 'Lançamentos!A2',  // vai adicionar sempre na próxima linha
+    range: 'Lançamentos!A2',
     valueInputOption: 'USER_ENTERED',
     resource,
   });
